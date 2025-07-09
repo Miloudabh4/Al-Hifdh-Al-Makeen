@@ -1,0 +1,1479 @@
+<html lang="ar" dir="rtl"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية الحفظ المكين للقرآن الكريم</title>
+    <meta name="description" content="أكاديمية الحفظ المكين - منصة تعليمية مجانية لحفظ القرآن الكريم خاصة بالنساء">
+    
+    <!-- Google Fonts for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&amp;family=Amiri:wght@400;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Color Palette */
+        :root {
+            --primary-green: #0D3B2E;
+            --accent-gold: #B58E2F;
+            --light-ivory: #F5F2E9;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+            --shadow: 0 2px 15px rgba(13, 59, 46, 0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: var(--light-ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Amiri', serif;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 700; }
+        h2 { font-size: 2rem; font-weight: 700; }
+        h3 { font-size: 1.5rem; font-weight: 600; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        /* Header Styles */
+        .header {
+            background: none;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(13, 59, 46, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-gold);
+            background: rgba(181, 142, 47, 0.1);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            position: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.8rem;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-gold);
+            color: var(--primary-green);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-green);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 59, 46, 0.8), rgba(13, 59, 46, 0.9)), 
+                        url('https://public.youware.com/users-website-assets/prod/ce9e3dce-ae5e-4d17-bd0e-e0ca3962e46c/7f22f97f02b94d11a6843dab8164cb3b.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://public.youware.com/users-website-assets/prod/ce9e3dce-ae5e-4d17-bd0e-e0ca3962e46c/6725b59e7be94a548c41682c4a5875f4.jpg');
+            background-size: 400px;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .hero-tagline {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #d4a843 100%);
+            color: var(--primary-green);
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(181, 142, 47, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-green));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Sections Overview */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .section-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-green));
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(13, 59, 46, 0.15);
+        }
+
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-gold), #d4a843);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary-green);
+        }
+
+        .join-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .join-btn:hover {
+            background: #1a5a44;
+            transform: translateY(-2px);
+        }
+
+        /* Program Section */
+        .program {
+            background: var(--light-ivory);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .schedule-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--accent-gold);
+        }
+
+        .groups-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .group-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .group-card h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Evaluation System */
+        .evaluation {
+            background: var(--white);
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .criteria-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-ivory);
+            border-radius: var(--border-radius);
+            position: relative;
+        }
+
+        .criteria-percentage {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Registration Form */
+        .registration {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .registration .section-title {
+            color: var(--white);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Tajawal', Arial, sans-serif;
+            transition: var(--transition);
+            background: var(--light-ivory);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(181, 142, 47, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--accent-gold), #d4a843);
+            color: var(--primary-green);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(181, 142, 47, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--light-ivory);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(181, 142, 47, 0.3);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-green);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .groups-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in.aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid var(--white);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body data-aos-easing="ease" data-aos-duration="800" data-aos-delay="0" style="opacity: 1; transition: opacity 0.5s;">
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="logo.png" class="logo">
+                <img src="logo.png" alt="Lugha Academy Logo" style="max-height: 70px; width: auto; float: right; margin: 10px;">
+
+                
+            </a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#sections">الأقسام</a></li>
+                    <li><a href="#program">البرنامج</a></li>
+                    <li><a href="#registration">التسجيل</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                    
+                </ul>
+            </nav>
+            </div>
+
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="fr">Français</button>
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="ar">العربية</button>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" style="background-position: center 0px;">
+        <div class="hero-content aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+            <h1>أكاديمية الحفظ المكين للقرآن الكريم</h1>
+            <p class="hero-subtitle">حفظ راسخ... خلق فاضل... قلب متصل بالقرآن</p>
+            <p class="hero-tagline">منصة تعليمية مجانية خاصة بالنساء</p>
+            <a href="#registration" class="cta-button">ابدئي رحلتك معنا</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title aos-init" data-aos="fade-up">من نحن</h2>
+            <div class="about-content">
+                <div class="about-text aos-init" data-aos="fade-right">
+                    <h3>رؤيتنا ورسالتنا</h3>
+                    <p>أكاديمية الحفظ المكين للقرآن الكريم هي منصة تعليمية إسلامية متخصصة في تحفيظ القرآن الكريم للنساء، نهدف إلى تقديم تعليم عالي الجودة في بيئة إسلامية داعمة ومحفزة.</p>
+                    <p>نسعى لتكوين جيل من المؤمنات المتقنات لكتاب الله عز وجل، اللواتي يجمعن بين الحفظ المتقن والفهم العميق والخلق الفاضل.</p>
+                    <p>رسالتنا هي تمكين النساء من تحقيق حلمهن في حفظ القرآن الكريم من خلال برامج تعليمية متنوعة ومدروسة تناسب جميع الأعمار والمستويات.</p>
+                </div>
+                <div class="about-image aos-init" data-aos="fade-left">
+                    <img src="poster.png" alt="نساء يدرسن القرآن الكريم">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections Overview -->
+    <section class="section sections-overview" id="sections">
+        <div class="container">
+            <h2 class="section-title aos-init" data-aos="fade-up">أقسام الأكاديمية</h2>
+            <div class="sections-grid">
+                <div class="section-card aos-init" data-aos="fade-up" data-aos-delay="100">
+                    <div class="section-icon">👧</div>
+                    <h3>قسم الأطفال</h3>
+                    <p>برنامج تحفيظ مخصص للفتيات من سن 7 إلى 13 سنة، مع مناهج تعليمية مناسبة لأعمارهن</p>
+                    <button class="join-btn">انضمي الآن</button>
+                </div>
+                
+                <div class="section-card aos-init" data-aos="fade-up" data-aos-delay="200">
+                    <div class="section-icon">👩</div>
+                    <h3>قسم النساء</h3>
+                    <p>برنامج شامل لتحفيظ القرآن الكريم للنساء البالغات مع دروس في التجويد والتفسير</p>
+                    <button class="join-btn">انضمي الآن</button>
+                </div>
+                
+                <div class="section-card aos-init" data-aos="fade-up" data-aos-delay="300">
+                    <div class="section-icon">👩‍🎓</div>
+                    <h3>قسم النساء غير المتعلمات</h3>
+                    <p>برنامج خاص لتعليم القراءة والكتابة وحفظ القرآن للنساء اللواتي لم تتح لهن فرصة التعليم</p>
+                    <button class="join-btn">انضمي الآن</button>
+                </div>
+                
+                <div class="section-card aos-init" data-aos="fade-up" data-aos-delay="400">
+                    <div class="section-icon">🌍</div>
+                    <h3>تعليم القرآن لغير الناطقات بالعربية</h3>
+                    <p>برنامج مصمم خصيصاً لتعليم القرآن الكريم للنساء غير الناطقات باللغة العربية</p>
+                    <button class="join-btn">انضمي الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="section program" id="program">
+        <div class="container">
+            <h2 class="section-title aos-init" data-aos="fade-up">البرنامج الأسبوعي</h2>
+            
+            <div class="schedule-grid aos-init" data-aos="fade-up" data-aos-delay="200">
+                <div class="schedule-item">
+                    <h4>حفظ</h4>
+                    <p>حفظ الآيات الجديدة</p>
+                </div>
+                <div class="schedule-item">
+                    <h4>مراجعة</h4>
+                    <p>مراجعة ما سبق حفظه</p>
+                </div>
+                <div class="schedule-item">
+                    <h4>اختبار</h4>
+                    <p>اختبار دوري للتقييم</p>
+                </div>
+                <div class="schedule-item">
+                    <h4>درس في التجويد</h4>
+                    <p>تعلم أحكام التجويد</p>
+                </div>
+                <div class="schedule-item">
+                    <h4>استظهار</h4>
+                    <p>تسميع ما تم حفظه</p>
+                </div>
+            </div>
+
+            <div class="groups-container aos-init" data-aos="fade-up" data-aos-delay="400">
+                <div class="group-card">
+                    <h4>المجموعة الأولى</h4>
+                    <p><strong>نصف صفحة يومياً</strong></p>
+                    <p>مناسبة للمبتدئات أو من لديهن وقت محدود</p>
+                    <ul>
+                        <li>• حفظ متدرج ومريح</li>
+                        <li>• مراجعة مكثفة</li>
+                        <li>• دعم إضافي للطالبات</li>
+                    </ul>
+                </div>
+                
+                <div class="group-card">
+                    <h4>المجموعة الثانية</h4>
+                    <p><strong>صفحة كاملة يومياً</strong></p>
+                    <p>للطالبات المتقدمات والمتفرغات</p>
+                    <ul>
+                        <li>• حفظ مكثف</li>
+                        <li>• تحدي أكبر</li>
+                        <li>• إنجاز أسرع</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evaluation System -->
+    <section class="section evaluation" id="evaluation">
+        <div class="container">
+            <h2 class="section-title aos-init" data-aos="fade-up">نظام التقييم</h2>
+            
+            <div class="criteria-grid">
+                <div class="criteria-item aos-init" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="criteria-percentage">30%</div>
+                    <h4>جودة الحفظ</h4>
+                    <p>دقة الحفظ وإتقان الآيات</p>
+                </div>
+                
+                <div class="criteria-item aos-init" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="criteria-percentage">25%</div>
+                    <h4>استمرارية المراجعة</h4>
+                    <p>المواظبة على مراجعة المحفوظ</p>
+                </div>
+                
+                <div class="criteria-item aos-init" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="criteria-percentage">20%</div>
+                    <h4>التفاعل والمشاركة</h4>
+                    <p>النشاط والمشاركة في الدروس</p>
+                </div>
+                
+                <div class="criteria-item aos-init" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="criteria-percentage">15%</div>
+                    <h4>الحضور والمواظبة</h4>
+                    <p>الانتظام في الحضور</p>
+                </div>
+                
+                <div class="criteria-item aos-init" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="criteria-percentage">10%</div>
+                    <h4>دروس التجويد والاختبارات</h4>
+                    <p>المشاركة في الأنشطة الإضافية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="section registration" id="registration">
+        <div class="container">
+            <h2 class="section-title aos-init" data-aos="fade-up">تسجيل الانضمام</h2>
+            
+            <div class="form-container aos-init" data-aos="fade-up" data-aos-delay="200">
+                <form id="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">الاسم الكامل *</label>
+                            <input type="text" id="fullName" name="fullName" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">الفئة *</label>
+                            <select id="category" name="category" required="">
+                                <option value="">اختر الفئة</option>
+                                <option value="children">قسم الأطفال (7-13 سنة)</option>
+                                <option value="women">قسم النساء</option>
+                                <option value="uneducated-women">قسم النساء غير المتعلمات</option>
+                                <option value="non-arabic">تعليم القرآن لغير الناطقات بالعربية</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">العمر *</label>
+                            <input type="number" id="age" name="age" min="7" max="100" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني *</label>
+                            <input type="email" id="email" name="email" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="group">المجموعة المفضلة *</label>
+                            <select id="group" name="group" required="">
+                                <option value="">اختر المجموعة</option>
+                                <option value="half-page">المجموعة الأولى (نصف صفحة يومياً)</option>
+                                <option value="full-page">المجموعة الثانية (صفحة كاملة يومياً)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">رقم الواتساب *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">ملاحظات إضافية (اختياري)</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="أي معلومات إضافية تودين مشاركتها معنا..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">إرسال طلب التسجيل</span>
+                        <div class="loading" style="display: none;"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title aos-init" data-aos="fade-up">تواصل معنا</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item aos-init" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon">📧</div>
+                    <h4>البريد الإلكتروني</h4>
+                    <p>alhifdh.almakeen@gmail.com</p>
+                </div>
+                
+                <div class="contact-item aos-init" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-icon">📱</div>
+                    <h4>الهاتف والواتساب</h4>
+                    <p>+212 603-404844</p>
+                </div>
+                
+                <div class="contact-item aos-init" data-aos="fade-up" data-aos-delay="300">
+                    <div class="contact-icon">📍</div>
+                    <h4>الموقع</h4>
+                    <p>متاح عبر الإنترنت لجميع أنحاء العالم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#registration">التسجيل</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                        <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+                        <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>خدماتنا</h4>
+                    <ul>
+                        <li><a href="#">تحفيظ القرآن الكريم</a></li>
+                        <li><a href="#">دروس التجويد</a></li>
+                        <li><a href="#">برنامج محو الأمية</a></li>
+                        <li><a href="#">تعليم العربية لغير الناطقين</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>معلومات الأكاديمية</h4>
+                    <p>أكاديمية الحفظ المكين للقرآن الكريم - منصة تعليمية مجانية خاصة بالنساء تهدف إلى تحفيظ القرآن الكريم وتعليم أحكام التجويد في بيئة إسلامية داعمة.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 أكاديمية الحفظ المكين للقرآن الكريم. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://lib.youware.com/youware-lib-consumer.1751946057.js" id="yourware-lib"></script><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS Animation Library
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Language Switcher with Translations
+        const translations = {
+            ar: {
+                // Header
+                home: "الرئيسية",
+                about: "من نحن",
+                sections: "الأقسام",
+                program: "البرنامج",
+                registration: "التسجيل",
+                contact: "تواصل معنا",
+                login: "تسجيل الدخول",
+                
+                // Hero Section
+                heroTitle: "أكاديمية الحفظ المكين للقرآن الكريم",
+                heroSubtitle: "حفظ راسخ... خلق فاضل... قلب متصل بالقرآن",
+                heroTagline: "منصة تعليمية مجانية خاصة بالنساء",
+                ctaButton: "ابدئي رحلتك معنا",
+                
+                // About Section
+                aboutTitle: "من نحن",
+                aboutVision: "رؤيتنا ورسالتنا",
+                aboutText1: "أكاديمية الحفظ المكين للقرآن الكريم هي منصة تعليمية إسلامية متخصصة في تحفيظ القرآن الكريم للنساء، نهدف إلى تقديم تعليم عالي الجودة في بيئة إسلامية داعمة ومحفزة.",
+                aboutText2: "نسعى لتكوين جيل من المؤمنات المتقنات لكتاب الله عز وجل، اللواتي يجمعن بين الحفظ المتقن والفهم العميق والخلق الفاضل.",
+                aboutText3: "رسالتنا هي تمكين النساء من تحقيق حلمهن في حفظ القرآن الكريم من خلال برامج تعليمية متنوعة ومدروسة تناسب جميع الأعمار والمستويات.",
+                
+                // Sections
+                sectionsTitle: "أقسام الأكاديمية",
+                childrenSection: "قسم الأطفال",
+                childrenDesc: "برنامج تحفيظ مخصص للفتيات من سن 7 إلى 13 سنة، مع مناهج تعليمية مناسبة لأعمارهن",
+                womenSection: "قسم النساء",
+                womenDesc: "برنامج شامل لتحفيظ القرآن الكريم للنساء البالغات مع دروس في التجويد والتفسير",
+                uneducatedWomenSection: "قسم النساء غير المتعلمات",
+                uneducatedWomenDesc: "برنامج خاص لتعليم القراءة والكتابة وحفظ القرآن للنساء اللواتي لم تتح لهن فرصة التعليم",
+                nonArabicSection: "تعليم القرآن لغير الناطقات بالعربية",
+                nonArabicDesc: "برنامج مصمم خصيصاً لتعليم القرآن الكريم للنساء غير الناطقات باللغة العربية",
+                joinNow: "انضمي الآن",
+                
+                // Program
+                programTitle: "البرنامج الأسبوعي",
+                memorization: "حفظ",
+                review: "مراجعة",
+                exam: "اختبار",
+                tajweed: "درس في التجويد",
+                recitation: "استظهار",
+                
+                // Registration
+                registrationTitle: "تسجيل الانضمام",
+                fullName: "الاسم الكامل",
+                category: "الفئة",
+                age: "العمر",
+                email: "البريد الإلكتروني",
+                group: "المجموعة المفضلة",
+                whatsapp: "رقم الواتساب",
+                notes: "ملاحظات إضافية (اختياري)",
+                submit: "إرسال طلب التسجيل",
+                
+                // Contact
+                contactTitle: "تواصل معنا",
+                emailContact: "البريد الإلكتروني",
+                phoneContact: "الهاتف والواتساب",
+                location: "الموقع"
+            },
+            
+            fr: {
+                // Header
+                home: "Accueil",
+                about: "À propos",
+                sections: "Sections",
+                program: "Programme",
+                registration: "Inscription",
+                contact: "Contact",
+                login: "Connexion",
+                
+                // Hero Section
+                heroTitle: "Académie Al-Hifdh Al-Makeen du Saint Coran",
+                heroSubtitle: "Mémorisation solide... Noble caractère... Cœur connecté au Coran",
+                heroTagline: "Plateforme éducative gratuite réservée aux femmes",
+                ctaButton: "Commencez votre parcours avec nous",
+                
+                // About Section
+                aboutTitle: "À propos de nous",
+                aboutVision: "Notre vision et mission",
+                aboutText1: "L'Académie Al-Hifdh Al-Makeen du Saint Coran est une plateforme éducative islamique spécialisée dans la mémorisation du Coran pour les femmes, visant à fournir un enseignement de haute qualité dans un environnement islamique favorable et motivant.",
+                aboutText2: "Nous aspirons à former une génération de croyantes maîtrisant le Livre d'Allah, alliant mémorisation parfaite, compréhension profonde et noble caractère.",
+                aboutText3: "Notre mission est d'autonomiser les femmes pour réaliser leur rêve de mémoriser le Saint Coran à travers des programmes éducatifs variés et réfléchis adaptés à tous les âges et niveaux.",
+                
+                // Sections
+                sectionsTitle: "Sections de l'Académie",
+                childrenSection: "Section Enfants",
+                childrenDesc: "Programme de mémorisation dédié aux filles de 7 à 13 ans, avec des méthodes pédagogiques adaptées à leur âge",
+                womenSection: "Section Femmes",
+                womenDesc: "Programme complet de mémorisation du Coran pour femmes adultes avec cours de Tajwid et d'interprétation",
+                uneducatedWomenSection: "Section Femmes Non Éduquées",
+                uneducatedWomenDesc: "Programme spécial pour l'apprentissage de la lecture, l'écriture et la mémorisation du Coran pour les femmes qui n'ont pas eu l'opportunité d'être éduquées",
+                nonArabicSection: "Enseignement du Coran aux Non-Arabophones",
+                nonArabicDesc: "Programme spécialement conçu pour enseigner le Saint Coran aux femmes non-arabophones",
+                joinNow: "Rejoignez maintenant",
+                
+                // Program
+                programTitle: "Programme Hebdomadaire",
+                memorization: "Mémorisation",
+                review: "Révision",
+                exam: "Examen",
+                tajweed: "Cours de Tajwid",
+                recitation: "Récitation",
+                
+                // Registration
+                registrationTitle: "Inscription",
+                fullName: "Nom complet",
+                category: "Catégorie",
+                age: "Âge",
+                email: "Email",
+                group: "Groupe préféré",
+                whatsapp: "Numéro WhatsApp",
+                notes: "Notes supplémentaires (optionnel)",
+                submit: "Envoyer la demande d'inscription",
+                
+                // Contact
+                contactTitle: "Contactez-nous",
+                emailContact: "Email",
+                phoneContact: "Téléphone et WhatsApp",
+                location: "Localisation"
+            },
+            
+            en: {
+                // Header
+                home: "Home",
+                about: "About Us",
+                sections: "Sections",
+                program: "Program",
+                registration: "Registration",
+                contact: "Contact",
+                login: "Login",
+                
+                // Hero Section
+                heroTitle: "Al-Hifdh Al-Makeen Holy Quran Academy",
+                heroSubtitle: "Solid memorization... Noble character... Heart connected to the Quran",
+                heroTagline: "Free educational platform exclusively for women",
+                ctaButton: "Start your journey with us",
+                
+                // About Section
+                aboutTitle: "About Us",
+                aboutVision: "Our Vision and Mission",
+                aboutText1: "Al-Hifdh Al-Makeen Holy Quran Academy is an Islamic educational platform specialized in Quran memorization for women, aiming to provide high-quality education in a supportive and motivating Islamic environment.",
+                aboutText2: "We strive to build a generation of believing women who master Allah's Book, combining perfect memorization, deep understanding, and noble character.",
+                aboutText3: "Our mission is to empower women to achieve their dream of memorizing the Holy Quran through diverse and thoughtful educational programs suitable for all ages and levels.",
+                
+                // Sections
+                sectionsTitle: "Academy Sections",
+                childrenSection: "Children's Section",
+                childrenDesc: "Memorization program dedicated to girls aged 7 to 13 years, with educational curricula suitable for their ages",
+                womenSection: "Women's Section",
+                womenDesc: "Comprehensive Quran memorization program for adult women with Tajweed and interpretation lessons",
+                uneducatedWomenSection: "Uneducated Women's Section",
+                uneducatedWomenDesc: "Special program for teaching reading, writing and Quran memorization for women who did not have the opportunity for education",
+                nonArabicSection: "Quran Teaching for Non-Arabic Speakers",
+                nonArabicDesc: "Program specially designed to teach the Holy Quran to non-Arabic speaking women",
+                joinNow: "Join Now",
+                
+                // Program
+                programTitle: "Weekly Program",
+                memorization: "Memorization",
+                review: "Review",
+                exam: "Exam",
+                tajweed: "Tajweed Lesson",
+                recitation: "Recitation",
+                
+                // Registration
+                registrationTitle: "Registration",
+                fullName: "Full Name",
+                category: "Category",
+                age: "Age",
+                email: "Email",
+                group: "Preferred Group",
+                whatsapp: "WhatsApp Number",
+                notes: "Additional Notes (optional)",
+                submit: "Submit Registration Request",
+                
+                // Contact
+                contactTitle: "Contact Us",
+                emailContact: "Email",
+                phoneContact: "Phone and WhatsApp",
+                location: "Location"
+            }
+        };
+
+        let currentLanguage = 'ar';
+
+        function updateLanguage(lang) {
+            currentLanguage = lang;
+            const t = translations[lang];
+            
+            // Update direction and lang attribute
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                document.body.style.textAlign = 'right';
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+                document.body.style.textAlign = 'left';
+            }
+            
+            // Update all text content
+            document.querySelector('a[href="#home"]').textContent = t.home;
+            document.querySelector('a[href="#about"]').textContent = t.about;
+            document.querySelector('a[href="#sections"]').textContent = t.sections;
+            document.querySelector('a[href="#program"]').textContent = t.program;
+            document.querySelector('a[href="#registration"]').textContent = t.registration;
+            document.querySelector('a[href="#contact"]').textContent = t.contact;
+            document.querySelector('a[href="#login"]').textContent = t.login;
+            
+            // Hero section
+            document.querySelector('.hero h1').textContent = t.heroTitle;
+            document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
+            document.querySelector('.hero-tagline').textContent = t.heroTagline;
+            document.querySelector('.cta-button').textContent = t.ctaButton;
+            
+            // About section
+            document.querySelector('#about .section-title').textContent = t.aboutTitle;
+            document.querySelector('.about-text h3').textContent = t.aboutVision;
+            const aboutPs = document.querySelectorAll('.about-text p');
+            aboutPs[0].textContent = t.aboutText1;
+            aboutPs[1].textContent = t.aboutText2;
+            aboutPs[2].textContent = t.aboutText3;
+            
+            // Sections
+            document.querySelector('#sections .section-title').textContent = t.sectionsTitle;
+            const sectionCards = document.querySelectorAll('.section-card');
+            sectionCards[0].querySelector('h3').textContent = t.childrenSection;
+            sectionCards[0].querySelector('p').textContent = t.childrenDesc;
+            sectionCards[1].querySelector('h3').textContent = t.womenSection;
+            sectionCards[1].querySelector('p').textContent = t.womenDesc;
+            sectionCards[2].querySelector('h3').textContent = t.uneducatedWomenSection;
+            sectionCards[2].querySelector('p').textContent = t.uneducatedWomenDesc;
+            sectionCards[3].querySelector('h3').textContent = t.nonArabicSection;
+            sectionCards[3].querySelector('p').textContent = t.nonArabicDesc;
+            
+            // Join buttons
+            document.querySelectorAll('.join-btn').forEach(btn => {
+                btn.textContent = t.joinNow;
+            });
+            
+            // Program section
+            document.querySelector('#program .section-title').textContent = t.programTitle;
+            
+            // Registration section
+            document.querySelector('#registration .section-title').textContent = t.registrationTitle;
+            document.querySelector('label[for="fullName"]').textContent = t.fullName + ' *';
+            document.querySelector('label[for="category"]').textContent = t.category + ' *';
+            document.querySelector('label[for="age"]').textContent = t.age + ' *';
+            document.querySelector('label[for="email"]').textContent = t.email + ' *';
+            document.querySelector('label[for="group"]').textContent = t.group + ' *';
+            document.querySelector('label[for="whatsapp"]').textContent = t.whatsapp + ' *';
+            document.querySelector('label[for="notes"]').textContent = t.notes;
+            document.querySelector('.submit-btn .btn-text').textContent = t.submit;
+            
+            // Contact section
+            document.querySelector('#contact .section-title').textContent = t.contactTitle;
+            const contactItems = document.querySelectorAll('.contact-item h4');
+            contactItems[0].textContent = t.emailContact;
+            contactItems[1].textContent = t.phoneContact;
+            contactItems[2].textContent = t.location;
+            
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                updateLanguage(lang);
+            });
+        });
+
+        // Registration Form Handling
+        const registrationForm = document.getElementById('registration-form');
+        
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const loading = submitBtn.querySelector('.loading');
+            
+            btnText.style.display = 'none';
+            loading.style.display = 'inline-block';
+            submitBtn.disabled = true;
+
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Prepare message for WhatsApp
+            const message = `
+🕌 طلب تسجيل جديد - أكاديمية الحفظ المكين
+
+👤 الاسم: ${data.fullName}
+🎯 الفئة: ${data.category}
+🎂 العمر: ${data.age}
+📧 البريد الإلكتروني: ${data.email}
+👥 المجموعة: ${data.group}
+📱 الواتساب: ${data.whatsapp}
+📝 ملاحظات: ${data.notes || 'لا توجد ملاحظات'}
+
+جزاكم الله خيراً
+            `.trim();
+
+            // Simulate form submission
+            setTimeout(() => {
+                // Redirect to WhatsApp
+                const whatsappUrl = `https://wa.me/212603404844?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button state
+                btnText.style.display = 'inline';
+                loading.style.display = 'none';
+                submitBtn.disabled = false;
+                
+                // Show success message
+                alert('تم إرسال طلب التسجيل بنجاح! سيتم التواصل معك قريباً.');
+            }, 2000);
+        });
+
+        // Join buttons for sections
+        document.querySelectorAll('.join-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('registration').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            
+            if (parallax) {
+                parallax.style.backgroundPosition = `center ${speed}px`;
+            }
+        });
+
+        // Admin Configuration Modal (Basic Implementation)
+        function showAdminPanel() {
+            const adminPassword = prompt('كلمة مرور الإدارة:');
+            if (adminPassword === 'admin123') { // In real implementation, this should be secure
+                const adminPanel = `
+                    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;" id="admin-panel">
+                        <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%;">
+                            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">لوحة التحكم الإدارية</h3>
+                            <p>📊 إحصائيات التسجيل: 0 طالبة</p>
+                            <p>📈 معدل الزيارات: جديد</p>
+                            <p>📧 طلبات جديدة: 0</p>
+                            <button onclick="document.getElementById('admin-panel').remove()" style="background: var(--primary-green); color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; margin-top: 1rem; cursor: pointer;">إغلاق</button>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', adminPanel);
+            } else {
+                alert('كلمة مرور خاطئة');
+            }
+        }
+
+        // Add admin access (hidden - activated by keyboard shortcut)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                showAdminPanel();
+            }
+        });
+
+        // Enhanced form validation
+        const inputs = document.querySelectorAll('input[required], select[required]');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#e74c3c';
+                } else {
+                    this.style.borderColor = '#2ecc71';
+                }
+            });
+        });
+
+        // Email validation
+        document.getElementById('email').addEventListener('input', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#2ecc71';
+            }
+        });
+
+        // Phone validation
+        document.getElementById('whatsapp').addEventListener('input', function() {
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            if (!phoneRegex.test(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#2ecc71';
+            }
+        });
+
+        // Add loading animation when page loads
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+
+</body></html>
